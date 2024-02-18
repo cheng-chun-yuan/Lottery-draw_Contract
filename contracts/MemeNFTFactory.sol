@@ -1,20 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 import {MemeNFT} from "./MemeNFT.sol";
-import {IVRFMain} from "./IVRFMain.sol";
+import {IVRFMain} from "./interfaces/IVRFMain.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-
+import { IMemeNFTFactoryEvent } from "./interfaces/events/IMemeNFTFactoryEvent.sol";
 /// @title MemeNFTFactory
 /// @dev Contract for creating and managing pools
-contract MemeNFTFactory is Ownable {
-
-    event MemeNFTCreated(
-        address indexed memeNFT,
-        string name,
-        string symbol,
-        string baseTokenURI,
-        uint256[] percentage
-    );
+contract MemeNFTFactory is Ownable, IMemeNFTFactoryEvent {
 
     address[] public memeNFTs;
     IVRFMain public vrfMain;
@@ -26,6 +18,7 @@ contract MemeNFTFactory is Ownable {
     /// @param _vrfMain Address of the VRF Main contract
     function setVRFAccess(address _vrfMain) external onlyOwner {
         vrfMain = IVRFMain(_vrfMain);
+        emit ChangeVRFMain(_vrfMain);
     }
 
     /*//////////////////////////////////////////////////////////////////////////

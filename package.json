@@ -3,7 +3,7 @@
   "scripts": {
     "compile": "hardhat compile",
     "deploy:VRFMain": "hardhat deploy:VRFMain",
-    "deploy:memeNFTFactory": "hardhat deploy:memeNFTFactory",
+    "deploy:MemeNFTFactory": "hardhat deploy:MemeNFTFactory",
     "verify": "hardhat verify"
   },
   "devDependencies": {

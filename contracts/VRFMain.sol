@@ -1,14 +1,13 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
+import "./interfaces/IVRFManager.sol";
+import "./interfaces/events/IVRFMainEvent.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
-import "./IVRFManager.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import "@chainlink/contracts/src/v0.8/vrf/VRFConsumerBaseV2.sol";
 
-contract VRFMain is VRFConsumerBaseV2{
-    event RequestSent(uint256 requestId, uint32 numWords);
-    event RequestFulfilled(uint256 requestId, uint256[] randomWords);
+contract VRFMain is VRFConsumerBaseV2, IVRFMainEvent {
 
     struct RequestStatus {
         bool fulfilled; // whether the request has been successfully fulfilled

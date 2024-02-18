@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./ERC404.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
-import "./IVRFMain.sol";
+import "./interfaces/IVRFMain.sol";
 contract MemeNFT is ERC404 {
 
     struct RequestVRF {
